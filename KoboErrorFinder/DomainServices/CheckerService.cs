@@ -45,6 +45,7 @@ namespace KoboErrorFinder.DomainServices
             Console.WriteLine("\n1. Перевірка полів \"MSF Patient Id\":");
 
             List<Patient> uniquePatientsIds = patients
+               .OrderBy(p => p.PatientId)
                .GroupBy(p => p.PatientId)
                .Select(group => group.First())
                .ToList();
@@ -76,7 +77,9 @@ namespace KoboErrorFinder.DomainServices
         {
             Console.WriteLine("\n2. Перевірка полів \"Sex\" серед ідентичних Id:");
 
-            var groupedPatients = patients.GroupBy(p => p.PatientId);
+            var groupedPatients = patients
+                .OrderBy(p => p.PatientId)
+                .GroupBy(p => p.PatientId);
 
             var noCorrectSex = new List<string>();
 
@@ -115,6 +118,7 @@ namespace KoboErrorFinder.DomainServices
         {
             var groupedByIdMonthsAgePatients = patients
                 .Where(patient => patient.AgeUnit == "Months")
+                .OrderBy(p => p.PatientId)
                 .GroupBy(p => p.PatientId)
                 .ToList();
 
@@ -151,6 +155,7 @@ namespace KoboErrorFinder.DomainServices
 
             var monthsAgePatients = patients
                 .Where(patient => patient.AgeUnit == "Months")
+                .OrderBy(p => p.PatientId)
                 .ToList();
 
             var patientsWithMoreThan11Months = new List<Patient>();
@@ -176,6 +181,7 @@ namespace KoboErrorFinder.DomainServices
         {
             var groupedByIdYearsAgePatients = patients
                 .Where(patient => patient.AgeUnit == "Years")
+                .OrderBy(p => p.PatientId)
                 .GroupBy(p => p.PatientId)
                 .ToList();
 
