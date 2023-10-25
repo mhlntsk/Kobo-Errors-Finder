@@ -87,7 +87,7 @@ namespace KoboErrorFinder.DomainServices
             {
                 if (!group.All(p => p.Sex == group.First().Sex))
                 {
-                    Console.WriteLine($"\tID: {group.Key} - не всі значення Sex співпадають:");
+                    noCorrectSex.Add(group.Key);
                 }
             }
 
@@ -107,10 +107,10 @@ namespace KoboErrorFinder.DomainServices
         {
             Console.WriteLine("\n3. Перевірка полів \"Age\" серед ідентичних Id:");
 
-            Console.WriteLine("\n\t3.1 Вік в місяцях:");
+            Console.WriteLine("\n    3.1 Вік в місяцях:");
             CheckMonthsAge(patients);
 
-            Console.WriteLine("\n\t3.2 Вік в роках:");
+            Console.WriteLine("\n    3.2 Вік в роках:");
             CheckYearsAge(patients);
         }
 
@@ -167,7 +167,7 @@ namespace KoboErrorFinder.DomainServices
                     patientsWithMoreThan11Months.Add(patient);
                     patientsWithErrors.Add(patient);
 
-                    Console.WriteLine($"\t\tID: {patient.PatientId} - Вік в місяцях більше за 11");
+                    Console.WriteLine($"\tID: {patient.PatientId} - Вік в місяцях більше за 11");
                 }
             }
 
