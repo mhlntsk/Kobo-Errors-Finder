@@ -137,11 +137,11 @@ namespace KoboErrorFinder.DomainServices
 
                     if (hasPatientWithGreaterDateAndLessAge)
                     {
-                        Console.WriteLine($"\tID: {group.Key} - не всі значення Age співпадають або знайдено пацієнта з більшою датою та меншим віком:");
+                        Console.WriteLine($"\n\tID: {group.Key} - не всі значення Age заповнені коректно:");
 
                         foreach (var item in group)
                         {
-                            Console.WriteLine($"\t\t - {item.Age}");
+                            Console.WriteLine($"\t\t - {item.Age} | {item.Sex} | {item.DateOfConsultation}");
                             patientsWithErrors.Add(item);
                         }
                     }
@@ -167,7 +167,7 @@ namespace KoboErrorFinder.DomainServices
                     patientsWithMoreThan11Months.Add(patient);
                     patientsWithErrors.Add(patient);
 
-                    Console.WriteLine($"ID: {patient.PatientId} - Вік в місяцях більше за 11");
+                    Console.WriteLine($"\t\tID: {patient.PatientId} - Вік в місяцях більше за 11");
                 }
             }
 
@@ -200,11 +200,11 @@ namespace KoboErrorFinder.DomainServices
 
                     if (hasPatientWithGreaterDateAndLessAge)
                     {
-                        Console.WriteLine($"\tID: {group.Key} - не всі значення Age співпадають або знайдено пацієнта з більшою датою та меншим віком:");
+                        Console.WriteLine($"\n\tID: {group.Key} - не всі значення Age заповнені коректно:");
 
                         foreach (var item in group)
                         {
-                            Console.WriteLine($"\t\t - {item.Age}");
+                            Console.WriteLine($"\t\t - {item.Age} | {item.Sex} | {item.DateOfConsultation}");
                             patientsWithErrors.Add(item);
                         }
                     }
