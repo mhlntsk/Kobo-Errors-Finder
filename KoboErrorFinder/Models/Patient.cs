@@ -8,6 +8,7 @@ namespace KoboErrorFinder.Models
 {
     public class Patient
     {
+        public string UniqueEntityId = Guid.NewGuid().ToString();
         public string PatientId { get; set; }
         public DateOnly DateOfConsultation { get; set; }
         public string Sex { get; set; }
