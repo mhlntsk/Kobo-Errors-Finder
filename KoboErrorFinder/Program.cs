@@ -1,8 +1,4 @@
-﻿using KoboErrorFinder.Services;
-using NPOI.HSSF.UserModel;
-using NPOI.SS.UserModel;
-using NPOI.Util.Collections;
-using System.Text.RegularExpressions;
+﻿using KoboErrorFinder.ApplicationServices.Xlsx;
 
 namespace KoboErrorFinder
 {
@@ -12,15 +8,16 @@ namespace KoboErrorFinder
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-            var PathService = new PathReader();
+            var PathService = new PathReaderXlsx();
 
             while (true)
             {
+                var checkerXlsx = new CheckerXlsx();
                 string filePath = PathService.GetPath();
 
                 if (File.Exists(filePath))
                 {
-                    CheckerXlsx.CheckFile(filePath);
+                    checkerXlsx.CheckFile(filePath);
                 }
                 else
                 {

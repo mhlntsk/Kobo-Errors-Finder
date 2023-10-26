@@ -1,5 +1,6 @@
 ﻿using KoboErrorFinder.Models;
 using NPOI.POIFS.Properties;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace KoboErrorFinder.DomainServices
@@ -9,7 +10,7 @@ namespace KoboErrorFinder.DomainServices
         private readonly string pattern;
         private readonly string secondGroup;
         private readonly string thirdGroup;
-        public List<Error> errors { get; private set; }
+        public List<Error> errors { get; private set; } = new List<Error>();
         public CheckerService()
         {
             var secondValidOptions = new List<string> {
@@ -42,6 +43,9 @@ namespace KoboErrorFinder.DomainServices
                 CheckSex(patientsInGroup);
                 CheckMonthsCount(patientsInGroup);
             }
+
+            var printer = new PrinterService();
+            printer.PrintResult(errors, patients);
         }
 
         private void CheckIds(List<Patient> patientsInGroup)
@@ -50,7 +54,12 @@ namespace KoboErrorFinder.DomainServices
             {
                 if (!Regex.IsMatch(patientsInGroup[i].PatientId, pattern))
                 {
-                    var error = errors.FirstOrDefault(e => e.Patient.UniqueEntityId == patientsInGroup[0].UniqueEntityId);
+                    Error error = null;
+
+                    if (errors != null && errors.Count != 0)
+                    {
+                        error = errors.FirstOrDefault(e => e.Patient.UniqueEntityId == patientsInGroup[0].UniqueEntityId);
+                    }
 
                     if (error == null)
                     {
@@ -76,7 +85,12 @@ namespace KoboErrorFinder.DomainServices
                 if (Convert.ToInt32(patientsInGroup[i + 1].Age) < Convert.ToInt32(patientsInGroup[i].Age) ||
                    (Convert.ToInt32(patientsInGroup[i + 1].Age) - Convert.ToInt32(patientsInGroup[i].Age) > 1))
                 {
-                    var error = errors.FirstOrDefault(e => e.Patient.UniqueEntityId == patientsInGroup[0].UniqueEntityId);
+                    Error error = null;
+
+                    if (errors != null && errors.Count != 0)
+                    {
+                        error = errors.FirstOrDefault(e => e.Patient.UniqueEntityId == patientsInGroup[0].UniqueEntityId);
+                    }
 
                     if (error == null)
                     {
@@ -101,7 +115,12 @@ namespace KoboErrorFinder.DomainServices
             {
                 if (patientsInGroup.Any(p => p.Sex != patientsInGroup.First().Sex))
                 {
-                    var error = errors.FirstOrDefault(e => e.Patient.UniqueEntityId == patientsInGroup[0].UniqueEntityId);
+                    Error error = null;
+
+                    if (errors != null && errors.Count != 0)
+                    {
+                        error = errors.FirstOrDefault(e => e.Patient.UniqueEntityId == patientsInGroup[0].UniqueEntityId);
+                    }
 
                     if (error == null)
                     {
@@ -131,7 +150,12 @@ namespace KoboErrorFinder.DomainServices
             {
                 if (Convert.ToInt32(monthsPatientsInGroup[0].Age) >= 12)
                 {
-                    var error = errors.FirstOrDefault(e => e.Patient.UniqueEntityId == monthsPatientsInGroup[0].UniqueEntityId);
+                    Error error = null;
+
+                    if (errors != null && errors.Count != 0)
+                    {
+                        error = errors.FirstOrDefault(e => e.Patient.UniqueEntityId == patientsInGroup[0].UniqueEntityId);
+                    }
 
                     if (error == null)
                     {
@@ -150,47 +174,5 @@ namespace KoboErrorFinder.DomainServices
                 }
             }
         }
-
-
-
-
-
-        public void PrintIdError(List<Patient> patients)
-        {
-            if (patients.Count != 0)
-            {
-                foreach (var patient in patients)
-                {
-                    Console.WriteLine($"-{patient.PatientId} - некоректний формат ID");
-                }
-            }
-        }
-        public void PrintAgeError(List<Patient> patients)
-        {
-            Console.WriteLine($"\n-{patients.First().PatientId} - не всі значення \"Age\" заповнені коректно:");
-
-            foreach (var item in patients)
-            {
-                Console.WriteLine($"\t\t{item.Age} | {item.Sex} | {item.DateOfConsultation}");
-            }
-        }
-        public void PrintSexError(List<Patient> patients)
-        {
-            Console.WriteLine($"\n-{patients.First().PatientId} - значення \"Sex\" не співпадають");
-
-            foreach (var item in patients)
-            {
-                Console.WriteLine($"\t\t{item.Age} | {item.Sex} | {item.DateOfConsultation}");
-            }
-        }
-        public void PrintMonthsCountError(List<Patient> patients)
-        {
-            foreach (var patient in patients)
-            {
-                Console.WriteLine($"-{patient.PatientId} - Вік в місяцях більше за 11");
-                Console.WriteLine($"\t\t{patient.Age} | {patient.Sex} | {patient.DateOfConsultation}");
-            }
-        }
-        
     }
 }

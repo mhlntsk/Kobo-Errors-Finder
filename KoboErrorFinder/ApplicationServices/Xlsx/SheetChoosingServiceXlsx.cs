@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KoboErrorFinder.ApplicationServices
+namespace KoboErrorFinder.ApplicationServices.Xlsx
 {
-    public class SheetService
+    public class SheetChoosingServiceXlsx
     {
         public ISheet GetSheet(int sheetCount, XSSFWorkbook workbook)
         {
@@ -16,11 +16,22 @@ namespace KoboErrorFinder.ApplicationServices
 
         start:  // Мітка
 
-            Console.Write("Введіть номер листа: ");
+            bool correctNumber = true;
+            string input = null;
+            do
+            {
+                Console.Write("Введіть номер листа: ");
+                input = Console.ReadLine();
+                int number;
 
-            string sheetNumString = Console.ReadLine();
+                if (int.TryParse(input, out number))
+                {
+                    correctNumber = false;
+                }
+                
+            } while (correctNumber);
 
-            int sheetNumber = (Convert.ToInt32(sheetNumString) - 1); // Перший лист має індекс 0
+            int sheetNumber = Convert.ToInt32(input) - 1; // Перший лист має індекс 0
 
             if (sheetNumber < 0)
             {
@@ -28,7 +39,7 @@ namespace KoboErrorFinder.ApplicationServices
                 goto start;  // Перехід на мітку
             }
 
-            if (sheetNumber > (sheetCount - 1))
+            if (sheetNumber > sheetCount - 1)
             {
                 Console.WriteLine($"Кількість листів у поточному файлі - {sheetCount}\n");
                 goto start;  // Перехід на мітку

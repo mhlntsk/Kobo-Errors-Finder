@@ -13,10 +13,5 @@ namespace KoboErrorFinder.Models
         public bool SexError { get; set; }
         public bool AgeError { get; set; }
         public bool AgeMoreThan11MonthError { get; set; }
-
-        public void PrintErrors()
-        {
-
-        }
     }
 }

@@ -6,15 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KoboErrorFinder.ApplicationServices
+namespace KoboErrorFinder.ApplicationServices.Xlsx
 {
-    public class ReaderXlsx
+    public class MapperXlsxService
     {
-        public void ReadSheet(ISheet sheet, Dictionary<string, int> headersOfSheet, List<Patient> patients)
+        public List<Patient> ScanSheet(ISheet sheet, Dictionary<string, int> headersOfSheet)
         {
+            List<Patient> patients = new List<Patient>();
+
             for (int rowIdx = 1; rowIdx <= sheet.LastRowNum; rowIdx++) // Починаємо з 1, щоб уникнути заголовку стовпця
             {
                 IRow row = sheet.GetRow(rowIdx);
+
                 if (row != null)
                 {
                     Patient patient = new Patient();
@@ -61,6 +64,8 @@ namespace KoboErrorFinder.ApplicationServices
                     patients.Add(patient);
                 }
             }
+
+            return patients;
         }
     }
 }

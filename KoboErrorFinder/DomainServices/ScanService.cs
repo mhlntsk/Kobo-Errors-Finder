@@ -1,6 +1,6 @@
-﻿using KoboErrorFinder.ApplicationServices;
-using KoboErrorFinder.Models;
+﻿using KoboErrorFinder.ApplicationServices.Xlsx;
 using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +11,29 @@ namespace KoboErrorFinder.DomainServices
 {
     public class ScanService
     {
-        public void ScanSheet(ISheet sheet) 
+        public void Scan(XSSFWorkbook workbook) 
         {
-            IRow firstRowWithHeaders = sheet.GetRow(0); // Перший рядок - заголовок                
+            int sheetCount = workbook.NumberOfSheets;
 
-            if (firstRowWithHeaders != null)
-            {
-                Console.WriteLine($"------------- Початок сканування файлу {sheet.SheetName} -------------");
+            var sheetService = new SheetChoosingServiceXlsx();
+            ISheet sheet = sheetService.GetSheet(sheetCount, workbook);
 
-                List<Patient> patients = new List<Patient>();
 
-                var headersService = new HeadersService();
-                Dictionary<string, int> headersOfSheet = headersService.GetHeadersDictionary(firstRowWithHeaders);
+            Console.WriteLine($"------------- Початок сканування файлу {sheet.SheetName} -------------");
 
-                var readerService = new ReaderXlsx();
-                readerService.ReadSheet(sheet, headersOfSheet, patients);
 
-                var checkerServicecs = new CheckerService();
-                checkerServicecs.Check(patients);
+            IRow firstRowWithHeaders = sheet.GetRow(0); // Перший рядок - заголовки               
 
-                Console.WriteLine($"\n------------- Кінець сканування файлу {sheet.SheetName} -------------\n\n\n\n\n\n");
-            }
-            else
-            {
-                Console.WriteLine("Заголовок рядку не знайдено.");
-            }
+            var headersService = new HeadersService();
+            Dictionary<string, int> headersOfSheet = headersService.GetHeadersDictionary(firstRowWithHeaders);
+
+            var readerService = new MapperXlsxService();
+            var patients = readerService.ScanSheet(sheet, headersOfSheet);
+
+            var checkerServicecs = new CheckerService();
+            checkerServicecs.Check(patients);
+
+            Console.WriteLine($"\n------------- Кінець сканування файлу {sheet.SheetName} -------------\n\n\n");
         }
     }
 }
