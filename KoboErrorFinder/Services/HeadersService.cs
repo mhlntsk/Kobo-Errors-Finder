@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KoboErrorFinder.DomainServices
+namespace KoboErrorFinder.Services
 {
     public class HeadersService
     {

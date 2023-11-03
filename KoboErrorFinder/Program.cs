@@ -1,4 +1,4 @@
-﻿using KoboErrorFinder.ApplicationServices.Xlsx;
+﻿using KoboErrorFinder.Services;
 
 namespace KoboErrorFinder
 {
@@ -8,16 +8,16 @@ namespace KoboErrorFinder
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-            var PathService = new PathReaderXlsx();
+            var pathReaderService = new PathReaderService();
 
             while (true)
             {
-                var checkerXlsx = new CheckerXlsx();
-                string filePath = PathService.GetPath();
+                var sheetsService = new SheetsService();
+                string filePath = pathReaderService.GetPath();
 
                 if (File.Exists(filePath))
                 {
-                    checkerXlsx.CheckFile(filePath);
+                    sheetsService.CheckFile(filePath);
                 }
                 else
                 {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KoboErrorFinder.ApplicationServices.Xlsx
+namespace KoboErrorFinder.Services
 {
-    public class PathReaderXlsx
+    public class PathReaderService
     {
         public string GetPath()
         {
