@@ -21,6 +21,8 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
 
             MapOtherPatientLocationSpecify(headersOfSheet, myRow, rowFromTable);
 
+            MapTypeOfRequester(headersOfSheet, myRow, rowFromTable);
+
             return myRow;
         }
         public void MapAutoFormId(Dictionary<string, int> headersOfSheet, AmbulanceRow myRow, IRow rowFromTable)
@@ -45,6 +47,14 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             {
                 int columnIndex = headersOfSheet["Other Patient location: specify"];
                 myRow.OtherPatientLocationSpecify = rowFromTable.GetCell(columnIndex)?.ToString();
+            }
+        }
+        public void MapTypeOfRequester(Dictionary<string, int> headersOfSheet, AmbulanceRow myRow, IRow rowFromTable)
+        {
+            if (headersOfSheet.ContainsKey("Type of requester"))
+            {
+                int columnIndex = headersOfSheet["Type of requester"];
+                myRow.TypeOfRequester = rowFromTable.GetCell(columnIndex)?.ToString();
             }
         }
     }

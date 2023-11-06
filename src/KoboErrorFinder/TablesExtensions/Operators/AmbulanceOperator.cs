@@ -1,9 +1,5 @@
-﻿using KoboErrorFinder.Entities;
-using KoboErrorFinder.Entities.Errors;
+﻿using KoboErrorFinder.Entities.Errors;
 using KoboErrorFinder.Entities.Rows;
-using KoboErrorFinder;
-using KoboErrorFinder.TablesExtensions.Printers;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace KoboErrorFinder.TablesExtensions.Operators
 {
@@ -26,6 +22,7 @@ namespace KoboErrorFinder.TablesExtensions.Operators
             var rowsWithoutSpecifyLocation = ambulanceRows
                 .Where(p =>
                     p.RegionOfPatient == "Other location" &&
+                    p.TypeOfRequester == "Health facility" &&
                     p.OtherPatientLocationSpecify == null);
 
             if (rowsWithoutSpecifyLocation != null)

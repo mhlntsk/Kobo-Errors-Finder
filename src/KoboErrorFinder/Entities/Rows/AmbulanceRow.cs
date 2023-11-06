@@ -12,6 +12,7 @@ namespace KoboErrorFinder.Entities.Rows
         public string Auto_form_id { get; set; }
         public string RegionOfPatient { get; set; }
         public string OtherPatientLocationSpecify { get; set; }
+        public string TypeOfRequester { get; set; }
         public string AgeUnit { get; set; }
         public string AgeValue { get; set; }
         public string UniqueEntityId { get; } = Guid.NewGuid().ToString();
