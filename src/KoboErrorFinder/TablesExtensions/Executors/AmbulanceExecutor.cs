@@ -1,7 +1,5 @@
 ﻿using KoboErrorFinder.Entities.Rows;
-using KoboErrorFinder;
 using KoboErrorFinder.TablesExtensions.Mappers;
-using NPOI.SS.Formula.Functions;
 using NPOI.SS.UserModel;
 using KoboErrorFinder.TablesExtensions.Operators;
 using KoboErrorFinder.TablesExtensions.Printers;

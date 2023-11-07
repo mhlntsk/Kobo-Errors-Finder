@@ -10,6 +10,7 @@
 	<ItemGroup>
 		<PackageReference Include="NPOI" Version="2.6.2" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="NUnit" Version="3.14.0" />
 		<PackageReference Include="Unity.Container" Version="5.11.11" />
 	</ItemGroup>
 
