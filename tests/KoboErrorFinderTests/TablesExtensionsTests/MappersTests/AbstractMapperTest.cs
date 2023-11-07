@@ -10,6 +10,18 @@ namespace KoboErrorFinderTests.ModulsTests.MappersTests
     [TestFixture]
     public class AbstractMapperTest : BaseTest
     {
+        private XSSFWorkbook workbook;
+        private ISheet sheet;
+
+        [OneTimeSetUp]
+        public void SetUp()
+        {
+            workbook = new XSSFWorkbook();
+            sheet = workbook.CreateSheet("Sheet");
+        }
+
+
+
         [Test]
         public void MapDate_DateColumnExistsAndIsValidDate_ShouldSetMyRowDate()
         {
@@ -20,8 +32,6 @@ namespace KoboErrorFinderTests.ModulsTests.MappersTests
             };
             var basicRow = new BasicRow();
 
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            ISheet sheet = workbook.CreateSheet("Sheet1");
             IRow rowFromTable = sheet.CreateRow(0);
             ICell cell = rowFromTable.CreateCell(0);
 
@@ -47,8 +57,6 @@ namespace KoboErrorFinderTests.ModulsTests.MappersTests
             };
             var basicRow = new BasicRow();
 
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            ISheet sheet = workbook.CreateSheet("Sheet1");
             IRow rowFromTable = sheet.CreateRow(0);
             ICell cell = rowFromTable.CreateCell(0);
 
@@ -58,7 +66,9 @@ namespace KoboErrorFinderTests.ModulsTests.MappersTests
             var basicMapper = new BasicMapper();
 
             // Act and Assert
-            Assert.Throws<Exception>(() => basicMapper.MapDate(headersOfSheet, basicRow, rowFromTable));
+            Action action = () => basicMapper.MapDate(headersOfSheet, basicRow, rowFromTable);
+            action.Should().Throw<Exception>().Where(ex => ex.Message == "Не вдається розпарсити дату");
+
         }
 
         [Test]
@@ -89,8 +99,6 @@ namespace KoboErrorFinderTests.ModulsTests.MappersTests
                 { "Date of consultation", 0 },
             };
 
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            ISheet sheet = workbook.CreateSheet("Sheet1");
             IRow row = sheet.CreateRow(1);
 
             ICell cell0 = row.CreateCell(0);
@@ -117,8 +125,6 @@ namespace KoboErrorFinderTests.ModulsTests.MappersTests
                 { "Date of consultation", 0 },
             };
 
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            ISheet sheet = workbook.CreateSheet("Sheet1");
             IRow row = sheet.CreateRow(1);
 
             ICell cell0 = null;
