@@ -21,11 +21,11 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
 
             List<IMyRow> rows = new List<IMyRow>();
 
-            for (int rowIdx = 1; rowIdx <= sheet.LastRowNum - 1; rowIdx++) // Починаємо з 1, щоб уникнути заголовку стовпця
+            for (int rowIdx = 1; rowIdx <= sheet.LastRowNum; rowIdx++) // Починаємо з 1, щоб уникнути заголовку стовпця
             {
                 IRow rowFromTable = sheet.GetRow(rowIdx);
 
-                if (rowFromTable != null)
+                if (rowFromTable != null && rowFromTable.Cells.Count > 0)
                 {
                     var myRow = MakeSpecificMapping(headersOfSheet, rowFromTable);
 
@@ -42,13 +42,13 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             {
                 if (headersOfSheet.ContainsKey(_dateCells[i]))
                 {
-                    int columnIndex = headersOfSheet[_dateCells[i]];
+                    int cellNumInRow = headersOfSheet[_dateCells[i]];
 
-                    string dateAsString = rowFromTable.GetCell(columnIndex)?.ToString();
+                    string dateFromCell = rowFromTable.GetCell(cellNumInRow)?.ToString();
 
-                    if (!string.IsNullOrEmpty(dateAsString))
+                    if (!string.IsNullOrEmpty(dateFromCell))
                     {
-                        if (DateOnly.TryParse(dateAsString, out DateOnly date))
+                        if (DateOnly.TryParse(dateFromCell, out DateOnly date))
                         {
                             myRow.Date = date;
                         }

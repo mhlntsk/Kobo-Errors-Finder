@@ -10,12 +10,6 @@ namespace KoboErrorFinderTests.ModulsTests.MappersTests
     [TestFixture]
     public class AbstractMapperTest : BaseTest
     {
-        [SetUp]
-        public void Setup()
-        {
-            
-        }
-
         [Test]
         public void MapDate_DateColumnExistsAndIsValidDate_ShouldSetMyRowDate()
         {
@@ -82,6 +76,62 @@ namespace KoboErrorFinderTests.ModulsTests.MappersTests
 
             // Assert
             basicRow.Date.Should().Be(default(DateOnly));
+        }
+
+
+
+        [Test]
+        public void Map_WithValidData_ShouldReturnMappedRows()
+        {
+            // Arrange
+            var headersOfSheet = new Dictionary<string, int>
+            {
+                { "Date of consultation", 0 },
+            };
+
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            ISheet sheet = workbook.CreateSheet("Sheet1");
+            IRow row = sheet.CreateRow(1);
+
+            ICell cell0 = row.CreateCell(0);
+            cell0.SetCellValue("11-жовт.-2023");
+            row.Cells.Add(cell0);
+                
+            var basicMapper = new BasicMapper();
+
+            // Act
+            var result = basicMapper.Map(sheet, headersOfSheet);
+
+            // Assert
+            result.Should().NotBeNull();
+            result.Count.Should().Be(1);
+            result.First().Date.Should().Be(new DateOnly(2023, 10, 11));
+        }
+
+        [Test]
+        public void Map_WithInvalidData_ShouldReturnEmptyList()
+        {
+            // Arrange
+            var headersOfSheet = new Dictionary<string, int>
+            {
+                { "Date of consultation", 0 },
+            };
+
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            ISheet sheet = workbook.CreateSheet("Sheet1");
+            IRow row = sheet.CreateRow(1);
+
+            ICell cell0 = null;
+            row.Cells.Add(cell0);
+
+            var basicMapper = new BasicMapper();
+
+            // Act
+            var result = basicMapper.Map(sheet, headersOfSheet);
+
+            // Assert
+            result.Should().NotBeNull();
+            result.Count.Should().Be(0);
         }
     }
 }
