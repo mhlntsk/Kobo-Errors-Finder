@@ -12,8 +12,8 @@ namespace KoboErrorFinder.TablesExtensions.Executors
         protected readonly IAmbulanceMapper _mapper;
         protected readonly IAmbulanceOperator _operator;
         protected readonly IAmbulancePrinter _printer;
-        public List<IMyRow> rows { get; set; }
-        public List<IError> errors { get; set; }
+        public List<IMyRow> mapedRowsFromTable { get; set; }
+        public List<IError> errorsInRows { get; set; }
         public AmbulanceExecutor(IAmbulanceMapper ambulanceMapper, IAmbulanceOperator ambulanceOperator, IAmbulancePrinter ambulancePrinter)
         {
             _mapper = ambulanceMapper;
@@ -22,11 +22,11 @@ namespace KoboErrorFinder.TablesExtensions.Executors
         }
         public void Execute(ISheet sheet, Dictionary<string, int> headersOfSheet)
         {
-            rows = _mapper.Map(sheet, headersOfSheet);
+            mapedRowsFromTable = _mapper.Map(sheet, headersOfSheet);
 
-            errors = _operator.Check(rows);
+            errorsInRows = _operator.Check(mapedRowsFromTable);
 
-            _printer.Print(errors, rows);
+            _printer.Print(errorsInRows, mapedRowsFromTable);
         }
     }
 }

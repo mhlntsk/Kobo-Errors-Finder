@@ -30,7 +30,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             if (headersOfSheet.ContainsKey("Total number of participants"))
             {
                 int columnIndex = headersOfSheet["Total number of participants"];
-                myRow.TotalNumberOfarticipants = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+                myRow.TotalNumberOfParticipants = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
             }
         }
         public void MapFemaleCount(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
@@ -54,7 +54,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             if (headersOfSheet.ContainsKey("0-4y"))
             {
                 int columnIndex = headersOfSheet["0-4y"];
-                myRow.y0_4 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+                myRow.Y0_4 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
             }
         }
         public void MapY5_9Count(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
@@ -62,7 +62,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             if (headersOfSheet.ContainsKey("5-9y"))
             {
                 int columnIndex = headersOfSheet["5-9y"];
-                myRow.y5_9 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+                myRow.Y5_9 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
             }
         }
         public void MapY10_14Count(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
@@ -70,7 +70,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             if (headersOfSheet.ContainsKey("10-14y"))
             {
                 int columnIndex = headersOfSheet["10-14y"];
-                myRow.y10_14 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+                myRow.Y10_14 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
             }
         }
         public void MapY15_19Count(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
@@ -78,7 +78,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             if (headersOfSheet.ContainsKey("15-19y"))
             {
                 int columnIndex = headersOfSheet["15-19y"];
-                myRow.y15_19 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+                myRow.Y15_19 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
             }
         }
         public void MapY20_44Count(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
@@ -86,7 +86,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             if (headersOfSheet.ContainsKey("20-44y"))
             {
                 int columnIndex = headersOfSheet["20-44y"];
-                myRow.y20_44 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+                myRow.Y20_44 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
             }
         }
         public void MapY45_64Count(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
@@ -94,7 +94,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             if (headersOfSheet.ContainsKey("45-64y"))
             {
                 int columnIndex = headersOfSheet["45-64y"];
-                myRow.y45_64 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+                myRow.Y45_64 = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
             }
         }
         public void MapY65_PlusCount(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
@@ -102,7 +102,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             if (headersOfSheet.ContainsKey("65+y"))
             {
                 int columnIndex = headersOfSheet["65+y"];
-                myRow.y65_Plus = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+                myRow.Y65_Plus = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
             }
         }
 

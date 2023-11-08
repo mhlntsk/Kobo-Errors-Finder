@@ -40,7 +40,7 @@ namespace KoboErrorFinder
             conductorService.RegisterTable("MH_Group Session_Dnipro_East", container.Resolve<MHGroupExecutor>());
             conductorService.RegisterTable("MH 1st consultation_Dnipro East", container.Resolve<BasicExecutor>());
             conductorService.RegisterTable("MH_Follow Up consultation_Dn...", container.Resolve<BasicExecutor>());
-            conductorService.RegisterTable("OPD/NCD register_Dnipro East", container.Resolve<BasicExecutor>());
+            conductorService.RegisterTable("OPD_NCD register_Dnipro East", container.Resolve<BasicExecutor>());
             conductorService.RegisterTable("ED register_Dnipro East", container.Resolve<BasicExecutor>());
             conductorService.RegisterTable("SRH Register_Dnipro East", container.Resolve<BasicExecutor>());
             conductorService.RegisterTable("ICU_Dnipro East", container.Resolve<BasicExecutor>());

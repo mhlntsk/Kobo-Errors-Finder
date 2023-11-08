@@ -21,8 +21,8 @@ namespace KoboErrorFinder.TablesExtensions.Executors
         protected readonly IBasicMapper _mapper;
         protected readonly IBasicOperator _operator;
         protected readonly IBasicPrinter _printer;
-        public List<IMyRow> rows { get; set; }
-        public List<IError> errors { get; set; }
+        public List<IMyRow> mapedRowsFromTable { get; set; }
+        public List<IError> errorsInRows { get; set; }
         public BasicExecutor(IBasicMapper basicMapper, IBasicOperator basicOperator, IBasicPrinter basicPrinter)
         {
             _mapper = basicMapper;
@@ -31,11 +31,11 @@ namespace KoboErrorFinder.TablesExtensions.Executors
         }
         public void Execute(ISheet sheet, Dictionary<string, int> headersOfSheet)
         {
-            rows = _mapper.Map(sheet, headersOfSheet);
+            mapedRowsFromTable = _mapper.Map(sheet, headersOfSheet);
 
-            errors = _operator.Check(rows);
+            errorsInRows = _operator.Check(mapedRowsFromTable);
 
-            _printer.Print(errors, rows);
+            _printer.Print(errorsInRows, mapedRowsFromTable);
         }
     }
 }

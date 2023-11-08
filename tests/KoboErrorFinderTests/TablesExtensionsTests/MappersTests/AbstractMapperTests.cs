@@ -5,23 +5,11 @@ using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using NSubstitute;
 
-namespace KoboErrorFinderTests.ModulsTests.MappersTests
+namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
 {
     [TestFixture]
-    public class AbstractMapperTest : BaseTest
+    public class AbstractMapperTests : BaseTest
     {
-        private XSSFWorkbook workbook;
-        private ISheet sheet;
-
-        [OneTimeSetUp]
-        public void SetUp()
-        {
-            workbook = new XSSFWorkbook();
-            sheet = workbook.CreateSheet("Sheet");
-        }
-
-
-
         [Test]
         public void MapDate_DateColumnExistsAndIsValidDate_ShouldSetMyRowDate()
         {
