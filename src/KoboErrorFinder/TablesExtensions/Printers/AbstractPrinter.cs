@@ -19,25 +19,23 @@ namespace KoboErrorFinder.TablesExtensions.Printers
         {
             WhatICanDo = new string[]
             {
-                "можна йти пити каву!",
-                "а тепер живи з думкою, що це просто баг!))",
-                "тьотя Галя все правильно заповнила.",
-                "Відпочивай далі!",
-                "не переживай сонце, у тебе ще є таблиця OPD/NCD!",
-                "займи свій час чимось, і скинь 2 гривні Стерненку на дрони, жлобяра: https://send.monobank.ua/jar/dzBdJ3737",
-                "час донатити на ЗСУ!!! https://prytulafoundation.org/donation",
-                "а тепер не будь букою і донать на \"Повернись живим\" - https://savelife.in.ua/donate/#donate-army-card-monthly",
-                "тож подивись на милу мордашку Гетьмана і скинь грошики на United24 - https://u24.gov.ua/"
+                "you can go drink coffee!",
+                "and now live with the thought that it's just a bug! XD",
+                "(maybe 😂)",
+                "occupy your time with something, and drop 2 hryvnias on drones, greedy boy: https://send.monobank.ua/jar/dzBdJ3737",
+                "time to donate to the Ukrainian Armed Forces! https://prytulafoundation.org/donation",
+                "and now don't be a coward and donate on MSF - https://www.msf.org/donate",
+                "so look at Hetman's cute face and drop your money on United24 - https://u24.gov.ua/"
             };
 
             Random random = new Random();
-            randomizer = random.Next(0, 9);
+            randomizer = random.Next(0, WhatICanDo.Length);
         }
         public void Print(List<IError> errors, List<IMyRow> ambulanseRows)
         {
             if (errors == null || errors.Count == 0)
             {
-                Console.WriteLine($"Помилок в цій таблиці не виявлено, {WhatICanDo[randomizer]}");
+                Console.WriteLine($"No errors were found in this table, {WhatICanDo[randomizer]}");
                 return;
             }
 

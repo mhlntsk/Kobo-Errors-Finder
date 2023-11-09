@@ -17,7 +17,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
         };
         public List<IMyRow> Map(ISheet sheet, Dictionary<string, int> headersOfSheet)
         {
-            Console.WriteLine($"\n\n------------- Початок сканування файлу {sheet.SheetName} -------------");
+            Console.WriteLine($"\n\n------------- Errors from file {sheet.SheetName}: -------------");
 
             List<IMyRow> rows = new List<IMyRow>();
 

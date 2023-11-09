@@ -36,27 +36,27 @@ namespace KoboErrorFinder.TablesExtensions.Printers
 
                 if (errorsById.Any(error => error.Error.IdError == true))
                 {
-                    Console.WriteLine("\tПомилка поля \"MSF Patient Id\"");
+                    Console.WriteLine("\tError in field \"MSF Patient Id\"");
                 }
 
                 if (errorsById.Any(error => error.Error.SexError == true))
                 {
-                    Console.WriteLine("\tПомилка в синхронізації поля \"Sex\"");
+                    Console.WriteLine("\tError in synchronization of field \"Sex\"");
                 }
 
                 if (errorsById.Any(error => error.Error.AgeError == true))
                 {
-                    Console.WriteLine("\tПомилка в синхронізації поля \"Age\"");
+                    Console.WriteLine("\tError in synchronization of field \"Age\"");
                 }
 
                 if (errorsById.Any(error => error.Error.AgeMoreThan11MonthError == true))
                 {
-                    Console.WriteLine("\tВік в місяцях не може бути більши за 11!");
+                    Console.WriteLine("\tAge in months cannot be more than 11!");
                 }
 
                 if (errorsById.Any(error => error.Error.DateError == true))
                 {
-                    Console.WriteLine("\tДата не зазначена!");
+                    Console.WriteLine("\tThe date is not specified!");
                 }
 
                 var errorsToPrint = errorsById.Where(e => e.Error.AgeError || e.Error.SexError);

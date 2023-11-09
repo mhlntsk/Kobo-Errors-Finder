@@ -14,7 +14,7 @@ namespace KoboErrorFinder.Extensions.Services.Application
 
             while (true)
             {
-                Console.Write("Введіть шлях до файлу з розширенням \".xlsx\": ");
+                Console.Write("Enter the path to the file with the \".xlsx\" format: ");
                 filePath = Console.ReadLine();
 
                 if (filePath.EndsWith(".xlsx"))
@@ -22,7 +22,7 @@ namespace KoboErrorFinder.Extensions.Services.Application
                     return filePath;
                 }
 
-                Console.WriteLine("Невірний формат або файл не знайдено, спробуйте ще раз.\n");
+                Console.WriteLine("Invalid format or file not found, please try again.\n");
 
             }
         }

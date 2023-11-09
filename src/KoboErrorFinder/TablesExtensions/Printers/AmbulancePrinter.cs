@@ -37,17 +37,17 @@ namespace KoboErrorFinder.TablesExtensions.Printers
 
                 if (errorsById.Any(error => error.Error.AgeMoreThan11MonthError == true))
                 {
-                    Console.WriteLine("\tВік в місяцях не може бути більши за 11!");
+                    Console.WriteLine("\tAge in months cannot be more than 11!");
                 }
 
                 if (errorsById.Any(error => error.Error.OtherPatientLocationSpecifyIsEmpty == true))
                 {
-                    Console.WriteLine("\tУ пацієнта з локацією \"Other location\" має бути заповнене поле \"Other Patient location: specify\"");
+                    Console.WriteLine("\tThe patient with the location \"Other location\" must have the field \"Other Patient location: specify\"");
                 }
 
                 if (errorsById.Any(error => error.Error.DateError == true))
                 {
-                    Console.WriteLine("\tДата не зазначена!");
+                    Console.WriteLine("\tThe date is not specified!");
                 }
 
                 counter++;
