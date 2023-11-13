@@ -24,7 +24,7 @@ The Kobo Errors Finder project is designed to read data from .xlsx tables and ef
 This console app doesn't need to be installed. To use it, it is enough to download the project and run its bilded version.
 
 ## Documentation
-[Documentation](docs/doc.md)
+[Documentation](doc.md)
 
 ## Examples
 If you want to extend the application or customize it for your needs, you need to follow a simple sequence of actions. Let's speed up the script for adding a new table that will be checked (let's imagine calling it "NewSpecificTable"):
@@ -241,4 +241,4 @@ public class SpecificTablePrinter : AbstractPrinter, IPrinter<SpecificTablePrint
 - [NSubstitute](https://nsubstitute.github.io/) - NSubstitute
 
 ## License
-[License](docs/LICENSE.txt)
+[License](LICENSE.txt)
