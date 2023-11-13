@@ -1,6 +1,6 @@
 # Kobo Errors Finder
 
-![Application logo](../src/KoboErrorsFinder/bin/Debug/net7.0/KoboErrorsFinderLogo.png "Logo")
+![Application logo](KoboErrorsFinderLogo.png "Logo")
 
 ![NPOI](https://img.shields.io/nuget/v/NPOI?label=NPOI)
 ![Unity.Container](https://img.shields.io/nuget/v/Unity.Container?label=Unity.Container)
