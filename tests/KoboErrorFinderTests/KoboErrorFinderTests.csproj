@@ -30,6 +30,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\KoboErrorFinder\KoboErrorFinder.csproj" />
+		<ProjectReference Include="..\..\src\KoboErrorsFinder\KoboErrorFinder.csproj" />
 	</ItemGroup>
 </Project>

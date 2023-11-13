@@ -50,7 +50,7 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
             basicOperator.CheckIds(rows, errors);
 
             // Assert
-            errors.All(error => ((BasicError)error).IdError).Should().BeTrue();
+            errors.Any(error => ((BasicError)error).IdError).Should().BeTrue();
         }
 
         [Test]
@@ -123,7 +123,7 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
             basicOperator.CheckAge(rows, errors);
 
             // Assert
-            errors.All(error => ((BasicError)error).AgeError).Should().BeTrue();
+            errors.Any(error => ((BasicError)error).AgeError).Should().BeTrue();
         }
 
         [Test]
@@ -191,17 +191,20 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
             var rows = new List<IMyRow>();
 
             var pairOfValues = FakeDataGenerator.GetInvalidSexSequence();
+            Console.WriteLine(pairOfValues.key);
+            Console.WriteLine(pairOfValues.value1);
+            Console.WriteLine(pairOfValues.value2);
 
             var row1 = Substitute.For<BasicRow>();
-            row1.AgeValue = pairOfValues.key;
+            row1.Sex = pairOfValues.key;
             rows.Add(row1);
 
             var row2 = Substitute.For<BasicRow>();
-            row2.AgeValue = pairOfValues.value1;
+            row2.Sex = pairOfValues.value1;
             rows.Add(row2);
 
             var row3 = Substitute.For<BasicRow>();
-            row3.AgeValue = pairOfValues.value2;
+            row3.Sex = pairOfValues.value2;
             rows.Add(row3);
 
             var basicOperator = new BasicOperator();
@@ -210,7 +213,7 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
             basicOperator.CheckSex(rows, errors);
 
             // Assert
-            errors.All(error => ((BasicError)error).SexError).Should().BeTrue();
+            errors.Any(error => ((BasicError)error).SexError).Should().BeTrue();
         }
     }
 }

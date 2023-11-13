@@ -2,56 +2,59 @@
 using KoboErrorFinder.Entities.Errors;
 using KoboErrorFinder.Entities.Rows;
 using KoboErrorFinder.Entities;
-using KoboErrorFinder.TablesExtensions.Operators;
-using NSubstitute;
 using KoboErrorFinder.Models;
+using KoboErrorFinder.TablesExtensions.Operators;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NSubstitute;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
 {
-    public class AbstractAgeValueOperatorTests : BaseTest
+    public class AbstractOperatorTests : BaseTest
     {
         // ToDo test for Check-method
 
         [Test]
-        public void CheckMonthsCount_WithValidData_ErrorsShouldBeEmpty()
+        public void CheckDate_WithValidData_ErrorsShouldBeEmpty()
         {
             // Arrange
             var errors = new List<IError>();
             var rows = new List<IMyRow>();
 
             var row = Substitute.For<BasicRow>();
-            row.AgeUnit = "Month";
-            row.AgeValue = Convert.ToString(Random.Next(0, 12));
+            row.Date = Faker.Date.PastDateOnly();
             rows.Add(row);
 
             var basicOperator = new BasicOperator();
 
             // Act
-            basicOperator.CheckMonthsCount(rows, errors);
+            basicOperator.CheckDate(rows, errors);
 
             // Assert
             errors.Should().BeEmpty();
         }
 
         [Test]
-        public void CheckMonthsCount_WithInvalidData_ShouldAddErrorsToList()
+        public void CheckDate_WithInvalidData_ShouldAddErrorsToList()
         {
             // Arrange
             var errors = new List<IError>();
             var rows = new List<IMyRow>();
 
             var row = Substitute.For<BasicRow>();
-            row.AgeUnit = "Months";
-            row.AgeValue = Convert.ToString(Random.Next(12, int.MaxValue));
+            row.Date = DateOnly.MinValue;
             rows.Add(row);
 
             var basicOperator = new BasicOperator();
 
             // Act
-            basicOperator.CheckMonthsCount(rows, errors);
+            basicOperator.CheckDate(rows, errors);
 
             // Assert
-            errors.Any(error => ((BasicError)error).AgeMoreThan11MonthError).Should().BeTrue();
+            errors.Any(error => ((BasicError)error).DateError).Should().BeTrue();
         }
     }
 }

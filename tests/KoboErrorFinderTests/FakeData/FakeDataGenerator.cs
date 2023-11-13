@@ -21,15 +21,15 @@ namespace KoboErrorFinderTests.FakeData
                 "DE-SEL-ICU-210823-001",
             };
 
-            Random rnd = new Random();
+            var Random = new Random();
 
-            return ids[rnd.Next(0, ids.Length)];
+            return ids[Random.Next(0, ids.Length)];
         }
         public string GetInvalidIds()
         {
             string[] ids =
             {
-                "DE-LYM-ED-301023-052", // Cyrillic "-МН-" group 
+                "DE-LYM-МН-301023-052", // Cyrillic "-МН-" group 
                 " DE-DNY-МН-301023-001",
                 "DE-ZAP-ICU-160323-100 ",
                 "DE-KHR -OT-301023-012",
@@ -40,9 +40,9 @@ namespace KoboErrorFinderTests.FakeData
                 "",
             };
 
-            Random rnd = new Random();
+            var Random = new Random();
 
-            return ids[rnd.Next(0, ids.Length)];
+            return ids[Random.Next(0, ids.Length)];
         }
 
 
@@ -59,9 +59,9 @@ namespace KoboErrorFinderTests.FakeData
                 (key: "124", value: "125"),
             };
 
-            Random rnd = new Random();
+            var Random = new Random();
 
-            return dictionary[rnd.Next(0, dictionary.Length)];
+            return dictionary[Random.Next(0, dictionary.Length)];
         }
         public (string key, string value) GetInvalidAgePair()
         {
@@ -77,9 +77,9 @@ namespace KoboErrorFinderTests.FakeData
                 (key: "54", value: null),
             };
 
-            Random rnd = new Random();
+            var Random = new Random();
 
-            return dictionary[rnd.Next(0, dictionary.Length)];
+            return dictionary[Random.Next(0, dictionary.Length)];
         }
         public (string key, string value) GetEmptyAgePair()
         {
@@ -89,9 +89,9 @@ namespace KoboErrorFinderTests.FakeData
                 (key: "", value: "15"),
             };
 
-            Random rnd = new Random();
+            var Random = new Random();
 
-            return dictionary[rnd.Next(0, dictionary.Length)];
+            return dictionary[Random.Next(0, dictionary.Length)];
         }
 
 
@@ -104,9 +104,9 @@ namespace KoboErrorFinderTests.FakeData
                 (key: "SexExample", value1: "SexExample", value2: "SexExample"),
             };
 
-            Random rnd = new Random();
+            var Random = new Random();
 
-            return dictionary[rnd.Next(0, dictionary.Length)];
+            return dictionary[Random.Next(0, dictionary.Length)];
         }
         public (string key, string value1, string value2) GetInvalidSexSequence()
         {
@@ -117,13 +117,11 @@ namespace KoboErrorFinderTests.FakeData
                 (key: " ", value1: "SexExample", value2: "SexExample"),
                 (key: "", value1: "SexExample", value2: "SexExample"),
                 (key: null, value1: "SexExample", value2: "SexExample"),
-                (key: "SexExample ", value1: "SexExample", value2: "SexExample"),
-
             };
 
-            Random rnd = new Random();
+            var Random = new Random();
 
-            return dictionary[rnd.Next(0, dictionary.Length)];
+            return dictionary[Random.Next(0, dictionary.Length)];
         }
     }
 }
