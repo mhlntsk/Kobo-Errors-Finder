@@ -17,5 +17,6 @@ namespace KoboErrorFinder.Entities.Rows
         public string AgeValue { get; set; }
         public string UniqueEntityId { get; } = Guid.NewGuid().ToString();
         public DateOnly Date { get; set; }
+        public string MSFPatientID { get; set; }
     }
 }

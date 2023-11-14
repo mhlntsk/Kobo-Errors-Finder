@@ -23,7 +23,7 @@ namespace KoboErrorFinder.TablesExtensions.Operators
                 "PRY", "KHR", "MIK", "SEL", "RAI", "YAM", "TET", "CHE", "OLE", "NOS",
                 "KRA", "MAL", "KOY", "SIV", "SSH", "AND", "SER", "ANV", "KUN", "VIR",
                 "STU", "SPI", "OSK", "IZY", "CHI", "LIP", "KOM", "NOV", "KAL", "KLU",
-                "OZE", "ZAK", "BOG", "KUR", "SLD", "KOS", "LZK", "PRE", "SHA" };            
+                "OZE", "ZAK", "BOG", "KUR", "SLD", "KOS", "LZK", "PRE", "SHA" };
             secondGroup = string.Join("|", secondValidOptions);
 
             var thirdValidOptions = new List<string> { "OPD", "OT", "SRH", "ED", "MH", "ICU" };

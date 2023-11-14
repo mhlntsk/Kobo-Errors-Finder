@@ -10,5 +10,6 @@ namespace KoboErrorFinder.Entities.Rows.Abstractions
     {
         public string AgeUnit { get; set; }
         public string AgeValue { get; set; }
+        public string MSFPatientID { get; set; }
     }
 }

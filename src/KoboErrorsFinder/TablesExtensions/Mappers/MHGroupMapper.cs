@@ -23,6 +23,9 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             MapY45_64Count(headersOfSheet, myRow, rowFromTable);
             MapY65_PlusCount(headersOfSheet, myRow, rowFromTable);
 
+            MapProviderCode(headersOfSheet, myRow, rowFromTable);
+            MapDate(headersOfSheet, myRow, rowFromTable);
+
             return myRow;
         }
         public void MapTotalNumberOfParticipants(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)

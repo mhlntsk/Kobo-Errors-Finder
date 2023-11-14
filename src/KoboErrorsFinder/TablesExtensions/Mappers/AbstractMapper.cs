@@ -8,12 +8,12 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
     {
         private readonly string[] _dateCells = new string[]
         {
+            "Date of group session",
             "Date of consultation",
             "Date of visit",
             "Date of arrival",
             "Date of hospitalization",
-            "Date of group session",
-            "Date of request"
+            "Date of request",
         };
         public List<IMyRow> Map(ISheet sheet, Dictionary<string, int> headersOfSheet)
         {

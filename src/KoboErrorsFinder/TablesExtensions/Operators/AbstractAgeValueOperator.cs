@@ -11,36 +11,41 @@ namespace KoboErrorFinder.TablesExtensions.Operators
     {
         public void CheckMonthsCount(List<IMyRow> rows, List<IError> errors)
         {
-            List<IAgeRow> basicRows = rows.Cast<IAgeRow>().ToList();
+            List<IAgeRow> basicRows = rows.Cast<IAgeRow>().ToList();         
 
-            var monthsPatients = basicRows
+            var groupedByIdRows = basicRows
                 .Where(r => r.AgeUnit == "Months")
+                .OrderBy(p => p.MSFPatientID)
+                .GroupBy(p => p.MSFPatientID)
                 .ToList();
 
-            for (int i = 0; i < monthsPatients.Count(); i++)
+            foreach (var group in groupedByIdRows)
             {
-                if (Convert.ToInt32(monthsPatients[i].AgeValue) >= 12)
+                for (int i = 0; i < group.Count(); i++)
                 {
-                    IAgeError error = null;
-
-                    if (errors != null && errors.Count != 0)
+                    if (group.Any(e => int.TryParse(e.AgeValue, out int age) && age >= 12))
                     {
-                        error = (IAgeError)errors.FirstOrDefault(e => e.UniqueEntityId == monthsPatients[i].UniqueEntityId);
-                    }
+                        IAgeError error = null;
 
-                    if (error == null)
-                    {
-                        error = (IAgeError)GetError();
+                        if (errors != null && errors.Count != 0)
+                        {
+                            error = (IAgeError)errors.FirstOrDefault(e => e.UniqueEntityId == group.First().UniqueEntityId);
+                        }
 
-                        error.UniqueEntityId = monthsPatients[i].UniqueEntityId;
-                        error.AgeMoreThan11MonthError = true;
-                    }
-                    else
-                    {
-                        error.AgeMoreThan11MonthError = true;
-                    }
+                        if (error == null)
+                        {
+                            error = (IAgeError)GetError();
 
-                    errors.Add(error);
+                            error.UniqueEntityId = group.First().UniqueEntityId;
+                            error.AgeMoreThan11MonthError = true;
+                        }
+                        else
+                        {
+                            error.AgeMoreThan11MonthError = true;
+                        }
+
+                        errors.Add(error);
+                    }
                 }
             }
         }
