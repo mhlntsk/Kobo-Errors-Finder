@@ -5,6 +5,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
 {
     public class AmbulanceMapper : AbstractAgeValueMapper, IMapper<AmbulanceMapper>
     {
+        protected override string nameOfDateCell { get => "Date of request"; }
         public override IMyRow MakeSpecificMapping(Dictionary<string, int> headersOfSheet, IRow rowFromTable)
         {
             var myRow = new AmbulanceRow();

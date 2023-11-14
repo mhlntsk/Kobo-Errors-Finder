@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 
 namespace KoboErrorFinder.TablesExtensions.Executors
 {
-    public class OpdExecutor : IExecutor
+    public class OT_ICUExecutor : IExecutor
     {
-        protected readonly IMapper<BasicMapper> _mapper;
+        protected readonly IMapper<OT_ICUMapper> _mapper;
         protected readonly IOperator<BasicOperator> _operator;
-        protected readonly IPrinter<OpdPrinter> _printer;
+        protected readonly IPrinter<BasicPrinter> _printer;
         public List<IMyRow> mapedRowsFromTable { get; set; }
         public List<IError> errorsInRows { get; set; }
-        public OpdExecutor(IMapper<BasicMapper> mapper, 
-                           IOperator<BasicOperator> Operator, 
-                           IPrinter<OpdPrinter> printer)
+        public OT_ICUExecutor(IMapper<OT_ICUMapper> mapper,
+                           IOperator<BasicOperator> Operator,
+                           IPrinter<BasicPrinter> printer)
         {
             _mapper = mapper;
             _operator = Operator;

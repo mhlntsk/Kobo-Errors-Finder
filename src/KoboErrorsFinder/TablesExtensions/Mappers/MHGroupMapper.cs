@@ -6,6 +6,7 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
 {
     public class MHGroupMapper : AbstractProviderCodeValueMapper, IMapper<MHGroupMapper>
     {
+        protected override string nameOfDateCell { get => "Date of group session"; }
         public override MHGroupRow MakeSpecificMapping(Dictionary<string, int> headersOfSheet, IRow rowFromTable)
         {
             MHGroupRow myRow = new MHGroupRow();

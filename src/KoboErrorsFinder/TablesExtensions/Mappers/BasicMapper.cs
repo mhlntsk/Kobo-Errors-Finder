@@ -1,13 +1,13 @@
 ﻿using KoboErrorFinder.Entities;
 using KoboErrorFinder.Entities.Rows;
-using KoboErrorFinder.Models;
-using KoboErrorFinder;
 using NPOI.SS.UserModel;
 
 namespace KoboErrorFinder.TablesExtensions.Mappers
 {
     public class BasicMapper : AbstractAgeValueMapper, IMapper<BasicMapper>
     {
+        protected override string nameOfDateCell { get => "Date of consultation"; }
+
         public override IMyRow MakeSpecificMapping(Dictionary<string, int> headersOfSheet, IRow rowFromTable)
         {
             BasicRow myRow = new BasicRow();
