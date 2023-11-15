@@ -16,6 +16,7 @@ namespace KoboErrorFinder.TablesExtensions.Operators
         {
             CheckParticipantsCountBySex(rows, errors);
             CheckParticipantsCountByAge(rows, errors);
+            CheckParticipantsCountByStatus(rows, errors);
 
             CheckDate(rows, errors);
 
@@ -91,6 +92,44 @@ namespace KoboErrorFinder.TablesExtensions.Operators
                 }
             }
         }
+        public void CheckParticipantsCountByStatus(List<IMyRow> rows, List<IError> errors)
+        {
+            List<MHGroupRow> MHGroupRows = rows.Cast<MHGroupRow>().ToList();
+
+            foreach (var basicRow in MHGroupRows)
+            {
+                DateOnly dateWhenColumsWereAdded = DateOnly.Parse("15-11-2023");
+
+                if (basicRow.Date > dateWhenColumsWereAdded)
+                {
+                    if (basicRow.TotalNumberOfParticipants != (basicRow.IDPCount + basicRow.ReturneeCount + basicRow.HostCount))
+                    {
+                        MHGroupError error = null;
+
+                        if (errors != null && errors.Count != 0)
+                        {
+                            error = (MHGroupError)errors.FirstOrDefault(e => e.UniqueEntityId == basicRow.UniqueEntityId);
+                        }
+
+                        if (error == null)
+                        {
+                            error = new MHGroupError()
+                            {
+                                UniqueEntityId = basicRow.UniqueEntityId,
+                                ParticipantsByPatientStatusError = true
+                            };
+                        }
+                        else
+                        {
+                            error.ParticipantsByPatientStatusError = true;
+                        }
+
+                        errors.Add(error);
+                    }
+                }
+            }
+        }
+
         public override IError GetError()
         {
             return new MHGroupError();

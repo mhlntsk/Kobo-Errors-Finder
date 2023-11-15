@@ -24,6 +24,10 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
             MapY45_64Count(headersOfSheet, myRow, rowFromTable);
             MapY65_PlusCount(headersOfSheet, myRow, rowFromTable);
 
+            MapIDPCount(headersOfSheet, myRow, rowFromTable);
+            MapHostCount(headersOfSheet, myRow, rowFromTable);
+            MapReturneeCount(headersOfSheet, myRow, rowFromTable);
+
             MapProviderCode(headersOfSheet, myRow, rowFromTable);
             MapDate(headersOfSheet, myRow, rowFromTable);
 
@@ -37,6 +41,31 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
                 myRow.TotalNumberOfParticipants = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
             }
         }
+        public void MapIDPCount(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
+        {
+            if (headersOfSheet.ContainsKey("Total number of IDP"))
+            {
+                int columnIndex = headersOfSheet["Total number of IDP"];
+                myRow.IDPCount = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+            }
+        }
+        public void MapHostCount(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
+        {
+            if (headersOfSheet.ContainsKey("Total number of Host"))
+            {
+                int columnIndex = headersOfSheet["Total number of Host"];
+                myRow.HostCount = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+            }
+        }
+        public void MapReturneeCount(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
+        {
+            if (headersOfSheet.ContainsKey("Total number of Returnee"))
+            {
+                int columnIndex = headersOfSheet["Total number of Returnee"];
+                myRow.ReturneeCount = Convert.ToInt32(rowFromTable.GetCell(columnIndex)?.ToString());
+            }
+        }
+
         public void MapFemaleCount(Dictionary<string, int> headersOfSheet, MHGroupRow myRow, IRow rowFromTable)
         {
             if (headersOfSheet.ContainsKey("Female"))

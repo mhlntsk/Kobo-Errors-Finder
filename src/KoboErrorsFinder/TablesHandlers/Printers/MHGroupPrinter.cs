@@ -32,12 +32,22 @@ namespace KoboErrorFinder.TablesExtensions.Printers
                     Console.WriteLine("\tTotal Participants count is not match with sum by age!");
                 }
 
+                if (joinedErrorsAndRow.Error.ParticipantsByPatientStatusError == true)
+                {
+                    Console.WriteLine("\tTotal Participants count is not match with sum by patient status!");
+                }
+
                 if (joinedErrorsAndRow.Error.DateError == true)
                 {
                     Console.WriteLine("\tThe date is not specified!");
                 }
 
                 int totalBySex = joinedErrorsAndRow.Row.Male + joinedErrorsAndRow.Row.Female;
+
+                int totalByPatientStatus = joinedErrorsAndRow.Row.IDPCount + 
+                                           joinedErrorsAndRow.Row.HostCount + 
+                                           joinedErrorsAndRow.Row.ReturneeCount;
+
                 int totalByAge = joinedErrorsAndRow.Row.Y0_4 +
                                  joinedErrorsAndRow.Row.Y5_9 +
                                  joinedErrorsAndRow.Row.Y10_14 +
@@ -46,7 +56,7 @@ namespace KoboErrorFinder.TablesExtensions.Printers
                                  joinedErrorsAndRow.Row.Y45_64 +
                                  joinedErrorsAndRow.Row.Y65_Plus;
 
-                Console.WriteLine($"\t\t {joinedErrorsAndRow.Row.ProviderCode} | total: {joinedErrorsAndRow.Row.TotalNumberOfParticipants} | totalBySex: {totalBySex} | totalByAge: {totalByAge}");
+                Console.WriteLine($"\t\t {joinedErrorsAndRow.Row.ProviderCode} | total: {joinedErrorsAndRow.Row.TotalNumberOfParticipants} | totalBySex: {totalBySex} | totalByAge: {totalByAge} | totalByPatientStatus: {totalByPatientStatus}");
 
                 counter++;
             }

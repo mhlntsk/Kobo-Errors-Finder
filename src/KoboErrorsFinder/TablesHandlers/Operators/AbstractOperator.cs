@@ -12,7 +12,7 @@ namespace KoboErrorFinder.TablesExtensions.Operators
         {
             for (int i = 0; i < rows.Count; i++)
             {
-                if (rows[i].Date == default)
+                if (rows[i].Date == default || rows[i].Date > DateOnly.FromDateTime(DateTime.Now))
                 {
                     IError error = null;
 

@@ -25,6 +25,10 @@ namespace KoboErrorFinder.Entities.Rows
         public int Y45_64 { get; set; }
         public int Y65_Plus { get; set; }
 
+        public int IDPCount { get; set; }
+        public int HostCount { get; set; }
+        public int ReturneeCount { get; set; }
+
         public string ProviderCode { get; set; }
     }
 }
