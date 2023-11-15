@@ -9,7 +9,8 @@ using NSubstitute;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
 {
-    public class BasicOperatorTests :  BaseTest
+    [TestFixture]
+    public class BasicOperatorTests : BaseTest
     {
         // ToDo test for Check-method
 
@@ -150,7 +151,24 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
             action.Should().Throw<FormatException>();
 
         }
+        
+        [Test]
+        public void CheckAge_SingleRowInGroup_NoErrorAdded()
+        {
+            // Arrange
+            var operatorUnderTest = new BasicOperator();
+            var rows = new List<IMyRow>
+            {
+                new BasicRow { MSFPatientID = "DE-LYM-OPD-123456-001", AgeValue = "25"}
+            };
+            var errors = new List<IError>();
 
+            // Act
+            operatorUnderTest.CheckAge(rows, errors);
+
+            // Assert
+            errors.Should().BeEmpty();
+        }
 
 
         [Test]

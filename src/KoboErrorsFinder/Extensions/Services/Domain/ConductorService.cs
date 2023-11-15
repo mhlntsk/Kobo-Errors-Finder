@@ -1,10 +1,4 @@
 ﻿using KoboErrorFinder.TablesExtensions.Executors;
-using NPOI.SS.UserModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KoboErrorFinder.Extensions.Services.Domain
 {
@@ -13,10 +7,6 @@ namespace KoboErrorFinder.Extensions.Services.Domain
     /// </summary>
     public class ConductorService : IConductorService
     {
-        public ConductorService()
-        {
-                
-        }
         private readonly Dictionary<string, IExecutor> executors = new Dictionary<string, IExecutor>();
         public void RegisterTable(string nameOfTable, IExecutor executor)
         {

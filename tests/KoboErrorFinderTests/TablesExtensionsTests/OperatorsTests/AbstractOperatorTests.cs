@@ -13,6 +13,7 @@ using NSubstitute;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
 {
+    [TestFixture]
     public class AbstractOperatorTests : BaseTest
     {
         // ToDo test for Check-method

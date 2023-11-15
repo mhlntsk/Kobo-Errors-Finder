@@ -8,6 +8,7 @@ using KoboErrorFinder.Models;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
 {
+    [TestFixture]
     public class AbstractAgeValueOperatorTests : BaseTest
     {
         // ToDo test for Check-method

@@ -1,5 +1,4 @@
-﻿using KoboErrorFinder.Extensions;
-using KoboErrorFinder.Extensions.Services.Application;
+﻿using KoboErrorFinder.Extensions.Services.Application;
 using KoboErrorFinder.Extensions.Services.Domain;
 using KoboErrorFinder.TablesExtensions.Executors;
 using KoboErrorFinder.TablesExtensions.Mappers;

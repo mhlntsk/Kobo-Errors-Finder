@@ -25,7 +25,6 @@
 
 	<ItemGroup>
 		<Folder Include="TablesExtensionsTests\ExecutorsTests\" />
-		<Folder Include="TablesExtensionsTests\PrintersTests\" />
 		<Folder Include="ServicesTests\" />
 	</ItemGroup>
 

@@ -4,6 +4,7 @@ using NPOI.SS.UserModel;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
 {
+    [TestFixture]
     public class MHGroupMapperTests : BaseTest
     {
         [Test]

@@ -2,14 +2,10 @@
 using KoboErrorFinder.Entities;
 using KoboErrorFinder.TablesExtensions.Mappers;
 using NPOI.SS.UserModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
 {
+    [TestFixture]
     public class AbstractAgeValueMapperTests : BaseTest
     {
         [Test]

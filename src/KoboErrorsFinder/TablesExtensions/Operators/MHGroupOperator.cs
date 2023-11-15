@@ -21,7 +21,7 @@ namespace KoboErrorFinder.TablesExtensions.Operators
 
             return errors;
         }
-        public void CheckParticipantsCountBySex(List<IMyRow> rows, List<IError> errors)
+        public void CheckParticipantsCountByAge(List<IMyRow> rows, List<IError> errors)
         {
             List<MHGroupRow> MHGroupRows = rows.Cast<MHGroupRow>().ToList();
 
@@ -47,19 +47,19 @@ namespace KoboErrorFinder.TablesExtensions.Operators
                         error = new MHGroupError()
                         {
                             UniqueEntityId = basicRow.UniqueEntityId,
-                            ParticipantByAgeError = true
+                            ParticipantsByAgeError = true
                         };
                     }
                     else
                     {
-                        error.ParticipantByAgeError = true;
+                        error.ParticipantsByAgeError = true;
                     }
 
                     errors.Add(error);
                 }
             }
         }
-        public void CheckParticipantsCountByAge(List<IMyRow> rows, List<IError> errors)
+        public void CheckParticipantsCountBySex(List<IMyRow> rows, List<IError> errors)
         {
             List<MHGroupRow> MHGroupRows = rows.Cast<MHGroupRow>().ToList();
 
@@ -79,12 +79,12 @@ namespace KoboErrorFinder.TablesExtensions.Operators
                         error = new MHGroupError()
                         {
                             UniqueEntityId = basicRow.UniqueEntityId,
-                            ParticipantBySexError = true
+                            ParticipantsBySexError = true
                         };
                     }
                     else
                     {
-                        error.ParticipantBySexError = true;
+                        error.ParticipantsBySexError = true;
                     }
 
                     errors.Add(error);

@@ -9,9 +9,14 @@ namespace KoboErrorFinder.Entities.Rows
 {
     public class MHGroupRow : IMyRow, IProviderCodeRow
     {
+        public string UniqueEntityId { get; } = Guid.NewGuid().ToString();
+        public DateOnly Date { get; set; }
+
         public int TotalNumberOfParticipants { get; set; }
+
         public int Female { get; set; }
         public int Male { get; set; }
+
         public int Y0_4 { get; set; }
         public int Y5_9 { get; set; }
         public int Y10_14 { get; set; }
@@ -19,8 +24,7 @@ namespace KoboErrorFinder.Entities.Rows
         public int Y20_44 { get; set; }
         public int Y45_64 { get; set; }
         public int Y65_Plus { get; set; }
+
         public string ProviderCode { get; set; }
-        public string UniqueEntityId { get; } = Guid.NewGuid().ToString();
-        public DateOnly Date { get; set; }
     }
 }

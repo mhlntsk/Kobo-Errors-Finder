@@ -7,6 +7,7 @@ using NSubstitute;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
 {
+    [TestFixture]
     public class AmbulanceOperatorTests : BaseTest
     {
         // ToDo test for Check-method

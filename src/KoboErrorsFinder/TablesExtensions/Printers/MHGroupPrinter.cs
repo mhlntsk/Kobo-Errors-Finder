@@ -22,12 +22,12 @@ namespace KoboErrorFinder.TablesExtensions.Printers
             {
                 Console.WriteLine($"\n{counter}) {joinedErrorsAndRow.Row.Date}");
 
-                if (joinedErrorsAndRow.Error.ParticipantBySexError == true)
+                if (joinedErrorsAndRow.Error.ParticipantsBySexError == true)
                 {
                     Console.WriteLine("\tTotal participants count is not match with sum by sex!");
                 }
 
-                if (joinedErrorsAndRow.Error.ParticipantByAgeError == true)
+                if (joinedErrorsAndRow.Error.ParticipantsByAgeError == true)
                 {
                     Console.WriteLine("\tTotal Participants count is not match with sum by age!");
                 }
@@ -38,7 +38,7 @@ namespace KoboErrorFinder.TablesExtensions.Printers
                 }
 
                 int totalBySex = joinedErrorsAndRow.Row.Male + joinedErrorsAndRow.Row.Female;
-                int totalByAge = joinedErrorsAndRow.Row.Y0_4 + 
+                int totalByAge = joinedErrorsAndRow.Row.Y0_4 +
                                  joinedErrorsAndRow.Row.Y5_9 +
                                  joinedErrorsAndRow.Row.Y10_14 +
                                  joinedErrorsAndRow.Row.Y15_19 +

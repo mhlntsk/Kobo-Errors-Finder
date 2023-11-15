@@ -2,7 +2,6 @@
 using KoboErrorFinder.Entities;
 using KoboErrorFinder.TablesExtensions.Mappers;
 using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
 using NSubstitute;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests

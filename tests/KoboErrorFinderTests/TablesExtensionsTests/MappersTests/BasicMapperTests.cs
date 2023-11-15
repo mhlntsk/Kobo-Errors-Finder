@@ -5,6 +5,7 @@ using NPOI.SS.UserModel;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
 {
+    [TestFixture]
     public class BasicMapperTests : BaseTest
     {
         // ToDo MakeSpecificMapping

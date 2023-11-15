@@ -1,9 +1,6 @@
-﻿using KoboErrorFinder.Entities;
-using KoboErrorFinder.Entities.Errors;
+﻿using KoboErrorFinder.Entities.Errors;
 using KoboErrorFinder.Entities.Rows;
 using KoboErrorFinder.Entities.Rows.Abstractions;
-using KoboErrorFinder.Models;
-using NPOI.SS.Formula.Functions;
 
 namespace KoboErrorFinder.TablesExtensions.Operators
 {
@@ -11,32 +8,30 @@ namespace KoboErrorFinder.TablesExtensions.Operators
     {
         public void CheckMonthsCount(List<IMyRow> rows, List<IError> errors)
         {
-            List<IAgeRow> basicRows = rows.Cast<IAgeRow>().ToList();         
+            List<IAgeRow> basicRows = rows.Cast<IAgeRow>().ToList();
 
-            var groupedByIdRows = basicRows
+            var monthsErrorsRows = basicRows
                 .Where(r => r.AgeUnit == "Months")
-                .OrderBy(p => p.MSFPatientID)
-                .GroupBy(p => p.MSFPatientID)
                 .ToList();
 
-            foreach (var group in groupedByIdRows)
+            if (monthsErrorsRows != null && monthsErrorsRows.Count > 0)
             {
-                for (int i = 0; i < group.Count(); i++)
+                for (int i = 0; i < monthsErrorsRows.Count(); i++)
                 {
-                    if (group.Any(e => int.TryParse(e.AgeValue, out int age) && age >= 12))
+                    if (monthsErrorsRows.Any(e => int.TryParse(e.AgeValue, out int age) && age >= 12))
                     {
                         IAgeError error = null;
 
                         if (errors != null && errors.Count != 0)
                         {
-                            error = (IAgeError)errors.FirstOrDefault(e => e.UniqueEntityId == group.First().UniqueEntityId);
+                            error = (IAgeError)errors.FirstOrDefault(e => e.UniqueEntityId == monthsErrorsRows.First().UniqueEntityId);
                         }
 
                         if (error == null)
                         {
                             error = (IAgeError)GetError();
 
-                            error.UniqueEntityId = group.First().UniqueEntityId;
+                            error.UniqueEntityId = monthsErrorsRows.First().UniqueEntityId;
                             error.AgeMoreThan11MonthError = true;
                         }
                         else

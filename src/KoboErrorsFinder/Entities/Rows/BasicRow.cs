@@ -10,11 +10,14 @@ namespace KoboErrorFinder.Entities
 {
     public class BasicRow : IMyRow, IAgeRow
     {
-        public string MSFPatientID { get; set; }
-        public string Sex { get; set; }
-        public string AgeUnit { get; set; }
-        public string AgeValue { get; set; }
         public string UniqueEntityId { get; } = Guid.NewGuid().ToString();
         public DateOnly Date { get; set; }
+
+        public string AgeUnit { get; set; }
+        public string AgeValue { get; set; }
+
+        public string Sex { get; set; }
+        public string MSFPatientID { get; set; }
+
     }
 }
