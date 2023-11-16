@@ -1,16 +1,16 @@
 ﻿using FluentAssertions;
+using KoboErrorFinder.Entities.Errors;
 using KoboErrorFinder.Entities.Rows;
+using KoboErrorFinder.Entities.Rows.Abstractions;
 using KoboErrorFinder.TablesExtensions.Mappers;
 using NPOI.SS.UserModel;
+using NSubstitute;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
 {
     [TestFixture]
     public class AmbulanceMapperTests : BaseTest
     {
-        // ToDo MakeSpecificMapping
-
-
         [Test]
         public void MapAutoFormId_DateColumnExist_ShouldSetMyRowAuto_form_id()
         {

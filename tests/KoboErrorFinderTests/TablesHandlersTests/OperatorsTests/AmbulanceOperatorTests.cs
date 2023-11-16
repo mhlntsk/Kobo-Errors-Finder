@@ -10,8 +10,6 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
     [TestFixture]
     public class AmbulanceOperatorTests : BaseTest
     {
-        // ToDo test for Check-method
-
         [Test]
         public void CheckRegionOfPatient_WithValidData_ErrorsShouldBeEmpty()
         {

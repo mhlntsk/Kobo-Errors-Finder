@@ -1,14 +1,9 @@
 ﻿using FluentAssertions;
+using KoboErrorFinder.Entities;
 using KoboErrorFinder.Entities.Errors;
 using KoboErrorFinder.Entities.Rows;
-using KoboErrorFinder.Entities;
 using KoboErrorFinder.Models;
 using KoboErrorFinder.TablesExtensions.Operators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NSubstitute;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
@@ -16,8 +11,6 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
     [TestFixture]
     public class AbstractOperatorTests : BaseTest
     {
-        // ToDo test for Check-method
-
         [Test]
         public void CheckDate_WithValidData_ErrorsShouldBeEmpty()
         {

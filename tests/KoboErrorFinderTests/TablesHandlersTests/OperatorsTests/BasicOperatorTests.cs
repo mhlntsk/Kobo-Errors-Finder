@@ -12,8 +12,6 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
     [TestFixture]
     public class BasicOperatorTests : BaseTest
     {
-        // ToDo test for Check-method
-
         [Test]
         public void CheckIds_WithValidData_ErrorsShouldBeEmpty()
         {

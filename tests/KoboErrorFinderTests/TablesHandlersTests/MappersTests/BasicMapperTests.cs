@@ -8,9 +8,6 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
     [TestFixture]
     public class BasicMapperTests : BaseTest
     {
-        // ToDo MakeSpecificMapping
-
-
         [Test]
         public void MapMsfPatientId_DateColumnExist_ShouldSetMyRowMSFPatientID()
         {

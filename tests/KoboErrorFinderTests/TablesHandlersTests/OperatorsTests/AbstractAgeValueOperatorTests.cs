@@ -11,8 +11,6 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
     [TestFixture]
     public class AbstractAgeValueOperatorTests : BaseTest
     {
-        // ToDo test for Check-method
-
         [Test]
         public void CheckMonthsCount_WithValidData_ErrorsShouldBeEmpty()
         {

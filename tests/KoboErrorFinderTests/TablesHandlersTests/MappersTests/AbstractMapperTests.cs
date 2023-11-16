@@ -2,13 +2,23 @@
 using KoboErrorFinder.Entities;
 using KoboErrorFinder.TablesExtensions.Mappers;
 using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using NSubstitute;
 
 namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
 {
     [TestFixture]
-    public class AbstractMapperTests : BaseTest
+    public class AbstractMapperTests
     {
+        private ISheet sheet;
+
+        [SetUp]
+        public void SetUp()
+        {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            sheet = workbook.CreateSheet("Sheet");
+        }
+
         [Test]
         public void MapDate_DateColumnExistsAndIsValidDate_ShouldSetMyRowDate()
         {
@@ -91,7 +101,7 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
             ICell cell0 = row.CreateCell(0);
             cell0.SetCellValue("11-жовт.-2023");
             row.Cells.Add(cell0);
-                
+
             var basicMapper = new BasicMapper();
 
             // Act
@@ -102,7 +112,43 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
             result.Count.Should().Be(1);
             result.First().Date.Should().Be(new DateOnly(2023, 10, 11));
         }
+        [Test]
+        public void Map_WithValidData_ShouldCallInternalMethod()
+        {
+            // Arrange
+            var headersOfSheet = new Dictionary<string, int>
+            {
+                { "Date of consultation", 0 },
+            };
 
+            IRow row0 = sheet.CreateRow(0);
+            IRow row1 = sheet.CreateRow(1);
+            IRow row2 = sheet.CreateRow(2);
+            IRow row3 = sheet.CreateRow(3);
+
+            ICell cell0_0 = row0.CreateCell(0);
+            ICell cell0_1 = row1.CreateCell(0);
+            ICell cell0_2 = row2.CreateCell(0);
+            ICell cell0_3 = row3.CreateCell(0);
+
+            cell0_0.SetCellValue("10-жовт.-2023");
+            cell0_1.SetCellValue("11-жовт.-2008");
+            cell0_2.SetCellValue("12-жовт.-1087");
+            cell0_3.SetCellValue("13-жовт.-1975");
+
+            row0.Cells.Add(cell0_0);
+            row1.Cells.Add(cell0_1);
+            row2.Cells.Add(cell0_2);
+            row3.Cells.Add(cell0_3);
+
+            var basicMapper = Substitute.For<AbstractMapper>();
+
+            // Act
+            var result = basicMapper.Map(sheet, headersOfSheet);
+
+            // Assert
+            basicMapper.Received(3).MakeSpecificMapping(Arg.Any<Dictionary<string, int>>(), Arg.Any<IRow>());
+        }
         [Test]
         public void Map_WithInvalidData_ShouldReturnEmptyList()
         {

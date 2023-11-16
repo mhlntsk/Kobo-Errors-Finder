@@ -11,7 +11,7 @@ namespace KoboErrorFinderTests
         protected Faker Faker { get; private set; }
         protected FakeDataGenerator FakeDataGenerator { get; private set; }
         protected XSSFWorkbook workbook { get; private set; }
-        protected ISheet sheet { get; set; }
+        protected ISheet sheet { get; private set; }
 
         [OneTimeSetUp]
         public void SetupBeforeEachTest()
