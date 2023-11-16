@@ -1,17 +1,9 @@
-﻿using KoboErrorFinder.Entities.Rows;
-using KoboErrorFinder;
-using KoboErrorFinder;
-using NPOI.SS.UserModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KoboErrorFinder.Entities.Errors;
+using KoboErrorFinder.Entities.Rows;
 using KoboErrorFinder.TablesExtensions.Mappers;
 using KoboErrorFinder.TablesExtensions.Operators;
 using KoboErrorFinder.TablesExtensions.Printers;
-using NPOI.SS.Formula.Functions;
-using KoboErrorFinder.Entities.Errors;
+using NPOI.SS.UserModel;
 
 namespace KoboErrorFinder.TablesExtensions.Executors
 {
