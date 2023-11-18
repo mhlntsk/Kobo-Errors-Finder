@@ -45,9 +45,10 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
             operatorUnderTest.CheckParticipantsCountBySex(rows, errors);
 
             // Assert
-            errors.Should().HaveCount(1);
-            errors.Should().ContainSingle(error => error is MHGroupError && ((MHGroupError)error).ParticipantsBySexError);
-
+            Assert.Multiple(() => {
+                errors.Should().HaveCount(1);
+                errors.Should().ContainSingle(error => error is MHGroupError && ((MHGroupError)error).ParticipantsBySexError);
+            });
         }
 
 

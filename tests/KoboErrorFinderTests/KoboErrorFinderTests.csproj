@@ -24,10 +24,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="ServicesTests\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\..\src\KoboErrorsFinder\KoboErrorFinder.csproj" />
 	</ItemGroup>
 </Project>

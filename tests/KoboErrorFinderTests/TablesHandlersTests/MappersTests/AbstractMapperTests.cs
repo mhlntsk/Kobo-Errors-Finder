@@ -169,8 +169,10 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
             var result = basicMapper.Map(sheet, headersOfSheet);
 
             // Assert
-            result.Should().NotBeNull();
-            result.Count.Should().Be(0);
+            Assert.Multiple(() => {
+                result.Should().NotBeNull();
+                result.Count.Should().Be(0);
+            });
         }
     }
 }
