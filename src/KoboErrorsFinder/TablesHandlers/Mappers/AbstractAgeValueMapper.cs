@@ -28,6 +28,15 @@ namespace KoboErrorFinder.TablesExtensions.Mappers
                 int columnIndex = headersOfSheet["Age value"];
                 myRow.AgeValue = rowFromTable.GetCell(columnIndex)?.ToString();
             }
+
+            if (string.IsNullOrEmpty(myRow.AgeValue))
+            {
+                if (headersOfSheet.ContainsKey("Age"))
+                {
+                    int columnIndex = headersOfSheet["Age"];
+                    myRow.AgeValue = rowFromTable.GetCell(columnIndex)?.ToString();
+                }
+            }
         }
     }
 }

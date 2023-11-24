@@ -8,9 +8,6 @@ using System.Text.RegularExpressions;
 
 namespace KoboErrorFinder.TablesExtensions.Operators
 {
-    /// <summary>
-    /// Scans basic tables such as "OPD-NCD", "SRH"
-    /// </summary>
     public class BasicOperator : AbstractAgeValueOperator, IOperator<BasicOperator>
     {
         private readonly string pattern;

@@ -1,4 +1,6 @@
-﻿namespace KoboErrorFinder.Entities.Errors.Abstractions
+﻿using KoboErrorFinder.Entities.Rows;
+
+namespace KoboErrorFinder.Entities.Errors.Abstractions
 {
     public class MHGroupError : IError
     {
@@ -8,6 +10,5 @@
         public bool ParticipantsBySexError { get; set; }
         public bool ParticipantsByAgeError { get; set; }
         public bool ParticipantsByPatientStatusError { get; set; }
-
     }
 }

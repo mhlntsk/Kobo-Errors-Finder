@@ -57,7 +57,7 @@ namespace KoboErrorFinder.TablesExtensions.Printers
 
                 if (errorsById.Any(error => error.Error.DateError == true))
                 {
-                    Console.WriteLine("\tThe date is not specified!");
+                    Console.WriteLine("\tError in field \"Date\"");
                 }
 
                 if (errorsById.Any(e =>e.Error.AgeError == true || e.Error.SexError == true))

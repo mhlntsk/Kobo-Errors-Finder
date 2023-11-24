@@ -9,7 +9,7 @@ namespace KoboErrorFinder.TablesExtensions.Printers
     {
         public override void MakeSpecificPrinting(List<IError> errors, List<IMyRow> rows)
         {
-            var castedErrors = errors.Cast<MHGroupError>().ToList();
+            var castedErrors = errors.Cast<MHGroupError>().DistinctBy(obj => obj.UniqueEntityId).ToList();
             var castedRows = rows.Cast<MHGroupRow>().ToList();
 
             var joinedErrorsAndRows = from error in castedErrors
