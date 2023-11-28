@@ -5,7 +5,7 @@ using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using NSubstitute;
 
-namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
+namespace KoboErrorFinderTests.TablesHandlersTests.MappersTests
 {
     [TestFixture]
     public class AbstractMapperTests

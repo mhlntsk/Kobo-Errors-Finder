@@ -5,7 +5,7 @@ using KoboErrorFinder.Models;
 using KoboErrorFinder.TablesExtensions.Operators;
 using NSubstitute;
 
-namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
+namespace KoboErrorFinderTests.TablesHandlersTests.OperatorsTests
 {
     [TestFixture]
     public class AmbulanceOperatorTests : BaseTest

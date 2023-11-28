@@ -7,7 +7,7 @@ using KoboErrorFinder.TablesExtensions.Operators;
 using KoboErrorFinderTests.FakeData;
 using NSubstitute;
 
-namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
+namespace KoboErrorFinderTests.TablesHandlersTests.OperatorsTests
 {
     [TestFixture]
     public class BasicOperatorTests : BaseTest

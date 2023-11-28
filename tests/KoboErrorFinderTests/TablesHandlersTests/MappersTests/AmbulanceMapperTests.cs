@@ -6,7 +6,7 @@ using KoboErrorFinder.TablesExtensions.Mappers;
 using NPOI.SS.UserModel;
 using NSubstitute;
 
-namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
+namespace KoboErrorFinderTests.TablesHandlersTests.MappersTests
 {
     [TestFixture]
     public class AmbulanceMapperTests : BaseTest

@@ -2,7 +2,7 @@
 using KoboErrorFinder.TablesExtensions.Mappers;
 using NPOI.SS.UserModel;
 
-namespace KoboErrorFinderTests.TablesExtensionsTests.MappersTests
+namespace KoboErrorFinderTests.TablesHandlersTests.MappersTests
 {
     [TestFixture]
     public class MHGroupMapperTests : BaseTest

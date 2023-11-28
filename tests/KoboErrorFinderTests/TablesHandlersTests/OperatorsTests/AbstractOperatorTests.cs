@@ -6,7 +6,7 @@ using KoboErrorFinder.Models;
 using KoboErrorFinder.TablesExtensions.Operators;
 using NSubstitute;
 
-namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
+namespace KoboErrorFinderTests.TablesHandlersTests.OperatorsTests
 {
     [TestFixture]
     public class AbstractOperatorTests : BaseTest
@@ -39,7 +39,7 @@ namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
             var rows = new List<IMyRow>();
 
             var row = Substitute.For<BasicRow>();
-            row.Date = DateOnly.MinValue;
+            row.Date = Faker.Date.FutureDateOnly();
             rows.Add(row);
 
             var basicOperator = new BasicOperator();

@@ -38,9 +38,9 @@ namespace KoboErrorFinderTests.TablesHandlersTests.ExecutorsTests
 
             Received.InOrder(() =>
             {
-                _mapper.Map(sheet, headersOfSheet);
-                _operator.Received().Check(Arg.Any<List<IMyRow>>());
-                _printer.Print(Arg.Any<List<IError>>(), Arg.Any<List<IMyRow>>());
+                _mapper.Received(1).Map(sheet, headersOfSheet);
+                _operator.Received(1).Check(Arg.Any<List<IMyRow>>());
+                _printer.Received(1).Print(Arg.Any<List<IError>>(), Arg.Any<List<IMyRow>>());
             });
         }
     }

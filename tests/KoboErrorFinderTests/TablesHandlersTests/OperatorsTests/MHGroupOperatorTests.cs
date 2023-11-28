@@ -4,7 +4,7 @@ using KoboErrorFinder.Entities.Errors.Abstractions;
 using KoboErrorFinder.Entities.Rows;
 using KoboErrorFinder.TablesExtensions.Operators;
 
-namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
+namespace KoboErrorFinderTests.TablesHandlersTests.OperatorsTests
 {
     [TestFixture]
     public class MHGroupOperatorTests : BaseTest

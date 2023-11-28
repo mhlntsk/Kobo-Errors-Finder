@@ -1,12 +1,5 @@
-﻿using KoboErrorFinder.Entities.Rows;
-using KoboErrorFinder.Entities.Rows.Abstractions;
-using NPOI.SS.Formula.Functions;
+﻿using KoboErrorFinder.Entities.Rows.Abstractions;
 using NPOI.SS.UserModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KoboErrorFinder.TablesExtensions.Mappers
 {

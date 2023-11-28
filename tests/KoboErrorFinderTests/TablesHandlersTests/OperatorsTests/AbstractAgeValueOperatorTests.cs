@@ -6,7 +6,7 @@ using KoboErrorFinder.TablesExtensions.Operators;
 using NSubstitute;
 using KoboErrorFinder.Models;
 
-namespace KoboErrorFinderTests.TablesExtensionsTests.OperatorsTests
+namespace KoboErrorFinderTests.TablesHandlersTests.OperatorsTests
 {
     [TestFixture]
     public class AbstractAgeValueOperatorTests : BaseTest
